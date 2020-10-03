@@ -1,0 +1,54 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block title%}
+    <title>Bootstrap Material Admin by Bootstrapious.com</title>
+{% endblock %}
+{% block body %}
+<div class="col-lg-6">
+              <div class="info d-flex align-items-center">
+                <div class="content">
+                  <div class="logo">
+                    <h1>Sign Up</h1>
+                  </div>
+                  <p>Pendftaran Calon Siswa SMP Negeri 2</p>
+                </div>
+              </div>
+            </div>
+            <!-- Form Panel    -->
+            <div class="col-lg-6 bg-white">
+              <div class="form d-flex align-items-center">
+                <div class="content">
+                  <form  method="post">
+                  {% load widget_tweaks %}  
+                  {% csrf_token %}
+                    
+                 
+
+                            <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                            </div>
+
+                            {% for field in form %}
+                            <div class="row form-group">
+                               <label  for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {% render_field field class="form-control" placeholder=field.label %}
+                                <div class="{% if field.errors %} invalid{% endif %}">
+                                {% for error in field.errors %}
+                                    <p class="help-block">{{ error }}</p>
+                                {% endfor %}
+                                
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <button type="submit" class="submit-btn btn btn-primary">Sign Up</button>
+                     </form><br><small>Already have account? </small><a href="{% url 'login' %}" class="signup">Login</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+{% endblock %}

@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+    <title>Bootstrap Material Admin by Bootstrapious.com</title>
+{% endblock %}
+{% block judul %}
+<h2 class="no-margin-bottom">Pengumuman</h2>
+{% endblock %}
+{% block body %}
+<!-- Item --><div class="container-fluid">
+
+                                
+                                          <center> <H1>{{rows.judul}}</h1></center>
+                                          </br>{{rows.tanggal}}
+                                          </br></br></br>
+                                           {{rows.isi|safe}}
+                                            
+                                            
+                                   
+                               
+        </div>
+
+        
+        
+ {% endblock %}
+
+ {% block js %}
+    
+    <script src="{% static 'vendor/datatables.net/js/jquery.dataTables.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/dataTables.buttons.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.html5.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.print.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.colVis.min.js'%}"></script>
+    <script src="{% static 'js/data-table/datatables-init.js'%}"></script>
+    
+ {% endblock  %}

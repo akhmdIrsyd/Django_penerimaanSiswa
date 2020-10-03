@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+    <title>Bootstrap Material Admin by Bootstrapious.com</title>
+{% endblock %}
+{% block judul %}
+{% if request.get_full_path == "/biodata/" %}
+<h2 class="no-margin-bottom">Biodata</h2>
+{% elif request.get_full_path == "/setting/" %}
+<h2 class="no-margin-bottom">Setting</h2>
+{% else %}
+<h2 class="no-margin-bottom">Form</h2>
+{% endif %}
+
+{% endblock %}
+{% block body %}
+<div class="col-lg-12">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <strong>Basic Form Siswa</strong> 
+                                                    </div>
+                                                    {% load widget_tweaks %}  
+    <form method="post" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+
+
+  <div class="modal-body">
+
+
+                            <div class="{% if form1.non_field_errors %}invalid{% endif %} mb-2">
+                            {% for error in form1.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                            </div>
+
+                            {% for field in form1 %}
+                            <div class="row form-group">
+                                <div class="col col-col-md-1"><label  for="{{ field.id_for_label }}">{{ field.label }}</label></div>
+                                <div class="col-12 col-md-12">{% render_field field class="form-control" placeholder=field.label %}</div>
+                                <div class="{% if field.errors %} invalid{% endif %}">
+                                {% for error in field.errors %}
+                                    <p class="help-block">{{ error }}</p>
+                                {% endfor %}
+                                
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                            </div>
+
+                            {% for field in form %}
+                            <div class="row form-group">
+                                <div class="col col-col-md-1"><label  for="{{ field.id_for_label }}">{{ field.label }}</label></div>
+                                <div class="col-12 col-md-12">{% render_field field class="form-control" placeholder=field.label %}</div>
+                                <div class="{% if field.errors %} invalid{% endif %}">
+                                {% for error in field.errors %}
+                                    <p class="help-block">{{ error }}</p>
+                                {% endfor %}
+                                
+                                </div>
+                            </div>
+                            {% endfor %}
+                        
+
+
+
+    <div class="{% if form2.non_field_errors %}invalid{% endif %} mb-2">
+      {% for error in form2.non_field_errors %}
+        {{ error }}
+      {% endfor %}
+    </div>
+
+    {% for field in form2 %}
+      <div class="row form-group">
+        <div class="col col-col-md-1"><label  for="{{ field.id_for_label }}">{{ field.label }}</label></div>
+        <div class="col-12 col-md-12">{% render_field field class="form-control" placeholder=field.label %}</div>
+        <div class="{% if field.errors %} invalid{% endif %}">
+          {% for error in field.errors %}
+            <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        
+        </div>
+      </div>
+    {% endfor %}
+
+    <div class="{% if form3.non_field_errors %}invalid{% endif %} mb-2">
+      {% for error in form3.non_field_errors %}
+        {{ error }}
+      {% endfor %}
+    </div>
+
+    {% for field in form3 %}
+      <div class="row form-group">
+        <div class="col col-col-md-1"><label  for="{{ field.id_for_label }}">{{ field.label }}</label></div>
+        
+        <div class="col-12 col-md-12">{% render_field field class="form-control" placeholder=field.label %}</div>
+        <div class="{% if field.errors %} invalid{% endif %}">
+          {% for error in field.errors %}
+            <p class="help-block">{{ error }}</p>
+          {% endfor %}
+        
+        </div>
+      </div>
+    {% endfor %}
+        
+
+  
+
+
+    <div class="modal-footer">
+     <button class="btn " type="button" name="button">
+                    <a href=""> Cancel</a></button>
+        <button type="submit" class="submit-btn btn btn-primary">Upload</button>
+    </div>
+
+</div>
+</form>
+                                                
+                                                
+
+                                            
+{% endblock %}

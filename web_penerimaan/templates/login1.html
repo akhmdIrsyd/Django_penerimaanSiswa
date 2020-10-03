@@ -1,0 +1,44 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block title%}
+    <title>Bootstrap Material Admin by Bootstrapious.com</title>
+{% endblock %}
+{% block body %}
+<div class="col-lg-6">
+              <div class="info d-flex align-items-center">
+                <div class="content">
+                  <div class="logo">
+                    <h1>Login</h1>
+                  </div>
+                  <p>Pendftaran Calon Siswa SMP Negeri 2</p>
+                </div>
+              </div>
+            </div>
+            <!-- Form Panel    -->
+            <div class="col-lg-6 bg-white">
+              <div class="form d-flex align-items-center">
+                <div class="content">
+                  <form  name="LoginForm"  method="post">
+                  {% csrf_token %}
+                    {% if next %}
+                        <input type="hidden" name="next" value="{{ next }}" />
+                    {% endif %}
+                    <div class="form-group">
+                      <input type="text"  id="email" name="email" required data-msg="Please enter your email" class="input-material">
+                      <label for="login-email" class="label-material">Email</label>
+                    </div>
+                    <div class="form-group">
+                      <input id="login-password" type="password" name="password" id="password" required data-msg="Please enter your password" class="input-material">
+                      <label for="login-password" class="label-material">Password</label>
+                    </div><button type="submit" class="submit-btn btn btn-primary">Login</button>
+                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
+                  </form><br><small>Do not have an account? </small><a href="{% url 'signup' %}" class="signup">Signup</a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+{% endblock %}

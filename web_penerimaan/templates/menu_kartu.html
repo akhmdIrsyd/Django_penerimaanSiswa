@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+    <title>Bootstrap Material Admin by Bootstrapious.com</title>
+{% endblock %}
+{% block judul %}
+<h2 class="no-margin-bottom">Announcement</h2>
+{% endblock %}
+{% block body %}
+<!-- Item --><div class="container-fluid">
+ {% if data_students.status_pendaftaran == 2 %}
+<input type="button" onClick="printChart()"   value="Cetak Kartu">
+
+{% else %}
+Selesaikan Pendaftaran Anda
+{% endif %}
+        </div>
+ {% endblock %}
+
+ {% block js %}
+    <script src="{% static 'vendor/datatables.net/js/jquery.dataTables.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/dataTables.buttons.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.html5.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.print.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.colVis.min.js'%}"></script>
+    <script src="{% static 'js/data-table/datatables-init.js'%}"></script>
+    <script>
+    function printChart(){
+
+
+    var URL = "{% url 'print_kartu' %}";
+
+    var W = window.open(URL);
+
+    W.window.print(); // Is this the right syntax ? This prints a blank page and not the above URL
+    }
+    </script>
+ {% endblock  %}

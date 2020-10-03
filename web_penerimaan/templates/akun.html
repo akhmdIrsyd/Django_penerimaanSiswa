@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+    <title>Bootstrap Material Admin by Bootstrapious.com</title>
+{% endblock %}
+{% block judul %}
+<h2 class="no-margin-bottom">Account</h2>
+{% endblock %}
+{% block body %}
+<!-- Item --><div class="container-fluid">
+<a  class="submit-btn btn btn-primary bg-blue" href="{% url 'signupaccount' %}" >Create Account </a>
+
+                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Email</th>
+                                            <th>Type User</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for row in rows %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ row.email }}</td>
+                                                <td>{{ row.get_user_type_display }}</td>
+                                                <td>
+                                                
+                                                
+                                                <button class="btn bg-orange" type="button" name="button">
+                                                <a href="{% url 'akun_update' pk=row.pk %}" id = '{{row.pk}}'> <i class="fa fa-pencil border-bottom"></i></a></button>
+                                                
+                                                <button class="btn bg-red" type="button" name="button">
+                                                <a href="{% url 'akun_delete' pk=row.pk %}" id = '{{row.pk}}'> <i class="fa fa-trash border-bottom"></i></a></button>
+                                                </td>
+                                                
+                                                
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+        </div>
+ {% endblock %}
+
+ {% block js %}
+    <script src="{% static 'vendor/datatables.net/js/jquery.dataTables.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/dataTables.buttons.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.html5.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.print.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.colVis.min.js'%}"></script>
+    <script src="{% static 'js/data-table/datatables-init.js'%}"></script>
+    
+ {% endblock  %}

@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+    <title>Bootstrap Material Admin by Bootstrapious.com</title>
+{% endblock %}
+{% block judul %}
+<h2 class="no-margin-bottom">Announcement</h2>
+{% endblock %}
+{% block body %}
+<!-- Item --><div class="container-fluid">
+<div class="card-body pad">
+<form method="post" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Judul</label></div>
+                    <div class="col-12 col-md-12"><input id="judul" value="{{rows.judul}}" name="judul" placeholder="Judul" class="form-control"></div>
+                   
+                </div>
+                <div class="row form-group">
+                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Isi</label></div>
+                <div class="col-12 col-md-12"><textarea class="textarea" id="isi" placeholder="isi" name="isi" 
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{rows.isi}}</textarea></div>
+                </div>
+             
+            </div>
+            <div class="modal-footer">
+     <button class="btn " type="button" name="button">
+                    <a href=""> Cancel</a></button>
+        <button type="submit" class="submit-btn btn btn-primary">Upload</button>
+    </div>
+            </form>
+        </div>
+ {% endblock %}
+
+ {% block js %}
+    <script src="{% static 'vendor/datatables.net/js/jquery.dataTables.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/dataTables.buttons.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.html5.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.print.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.colVis.min.js'%}"></script>
+    <script src="{% static 'js/data-table/datatables-init.js'%}"></script>
+    <script src="{% static 'vendor/summernote/summernote-bs4.min.js'%}"></script>
+    <script>
+        $(function () {
+        // Summernote
+        $('.textarea').summernote()
+        })
+    </script>
+    
+ {% endblock  %}

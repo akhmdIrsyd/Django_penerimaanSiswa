@@ -1,0 +1,56 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}
+    <title>Bootstrap Material Admin by Bootstrapious.com</title>
+{% endblock %}
+{% block judul %}
+{% endblock %}
+{% block body %}
+<!-- Item -->
+<div class="container-fluid bg-white">
+<h1>Selamat datang</h1>
+<h2>{{rows1.judul}}</h2>
+{{rows1.isi|safe}}
+</br>
+<h3>Pengumuman</h3>
+                                <table id="example" class="table" >
+                                    <thead style='display:none;'>
+                                        <tr>
+                                            <th style="width:180px"></th>
+                                            <th style="width:10px"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for row in rows %}
+                                        <tr>
+                                            <td style="width:80%">
+                                            <a href="{% url 'pengumuman_detail' pk=row.pk %}" id = '{{row.pk}}'>{{row.judul}}</a>
+                                            
+                                            </td>
+                                            <td style="width:20%">{{row.tanggal}}</td>
+                                            
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                               
+        </div>
+
+        </div>
+        
+        
+ {% endblock %}
+
+ {% block js %}
+   
+    <script src="{% static 'vendor/datatables.net/js/jquery.dataTables.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/dataTables.buttons.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.html5.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.print.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.colVis.min.js'%}"></script>
+    <script src="{% static 'js/data-table/datatables-init.js'%}"></script>
+    
+ {% endblock  %}
