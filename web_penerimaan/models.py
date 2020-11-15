@@ -133,5 +133,5 @@ class Pengumuman(models.Model):
     tanggal = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 

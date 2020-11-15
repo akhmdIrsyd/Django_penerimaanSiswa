@@ -1,3 +1,4 @@
+import django_heroku
 """
 Django settings for siswa_baru project.
 
@@ -80,8 +81,17 @@ WSGI_APPLICATION = 'siswa_baru.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'db_siswa',
+
+        'USER': 'postgres',
+
+        'PASSWORD': 'admin',
+
+        'HOST': '127.0.0.1',
+
+        'PORT': '5432',
     }
 }
 
@@ -130,3 +140,5 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+django_heroku.settings(locals())
