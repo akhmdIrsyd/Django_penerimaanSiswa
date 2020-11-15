@@ -1,1 +1,1 @@
-web: gunicorn siswa_baru--log-file -
+web: gunicorn siswa_baru.wsgi
