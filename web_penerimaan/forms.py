@@ -11,16 +11,15 @@ class SignUpForm(UserCreationForm):
         fields = ('email', 'nisn', 'password1', 'password2')
 
 
-USER_TYPE_CHOICES = (
-    
-    (2, 'comitte'),
-    (3, 'admin'),
-)
+#USER_CHOICES = ( 
+#    (2, 'comitte'),
+#    (3, 'admin'),
+#)
 class SignUp_panitiaForm(UserCreationForm):
-    User_type = forms.ChoiceField(choices=USER_TYPE_CHOICES)
+    #User_type = forms.ChoiceField(choices=USER_CHOICES)
     class Meta:
         model = User
-        fields = ('email', 'User_type', 'password1', 'password2')
+        fields = ('email', 'user_type', 'password1', 'password2')
 
 
 class LoginForm(UserCreationForm):
