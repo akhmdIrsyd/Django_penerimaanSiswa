@@ -37,9 +37,13 @@
                                                 
                                                
                                                 <a href="{% url 'pendaftar_delete' pk=row.pk %}" id = '{{row.pk}}' class="btn bg-red"> <i class="fa fa-trash border-bottom"></i></a></button>
-                                                
+                                                {% if  row.student.status_pendaftaran == 2 %}
                                                 <a href="" id = '{{row.pk}}'><button class="btn bg-blue"  onClick="printkartu_admin(this.id)" id='{{row.pk}}' type="button" name="button">
                                                  <i class="fa fa-print border-bottom"></i></a></button>
+                                                {% else %}
+                                                <a href="" id = '{{row.pk}}'><button class="btn bg-blue"  onClick="printkartu_admin(this.id)" id='{{row.pk}}' type="button" name="button">
+                                                 <i class="fa fa-print border-bottom" disabled ></i></a></button>
+                                                 {% endif %}
                                                 </td>
                                                 
                                                 
