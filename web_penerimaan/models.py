@@ -82,7 +82,7 @@ def _upload_path(instance, filename):
 def file_size(value):  # add this to some file where you can import it from
     limit = 2 * 1024 * 1024
     if value.size > limit:
-        raise ValidationError('File too large. Size should not exceed 2 MiB.')
+        raise ValidationError('File too large. Size should not exceed 2 MB.')
 
 class Student(models.Model):
     pendaftaran_choices = (
@@ -121,6 +121,7 @@ class Student(models.Model):
     status_pendaftaran = models.PositiveIntegerField(choices=pendaftaran_choices, default=1)
     status_verifikasi = models.PositiveIntegerField(choices=verifikasi_choices, default=1)
     status_seleksi = models.PositiveIntegerField(choices=seleksi_choices, default=1)
+    nilai_skhu=models.FloatField(default=0.0)
     #Foto=models.ImageField(_(""), upload_to=None, height_field=None, width_field=None, max_length=None)
 
     def get_upload_path(self, filename):

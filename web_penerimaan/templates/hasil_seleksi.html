@@ -9,10 +9,19 @@
 {% endblock %}
 {% block body %}
 <!-- Item --><div class="container-fluid">
+
  {% if data_students.status_seleksi == 3 %}
+ Nama :{{data_students.nama}}<br/>
+Sekolah : {{data_students.sekolah}}</br>
+Alamat  :{{data_students.alamat}}</br>
+Email : {{data_users.email}}</br>
 Selamat anda dinyatakan Lulus
 
 {% elif data_students.status_seleksi == 2 %}
+Nama :{{data_students.nama}}<br/>
+Sekolah : {{data_students.sekolah}}</br>
+Alamat  :{{data_students.alamat}}</br>
+Email : {{data_users.email}}</br>
 maaf, anda dinyatakan tidak lulus
 
 {% else %}

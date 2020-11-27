@@ -405,3 +405,27 @@ def kartu(request):
         'mail': mail,
     }
     return render(request, 'kartu.html', context)
+
+@login_required
+def laporan(request):
+    user = request.user
+    mail = user.email
+    data_users = User.objects.all().filter(user_type=1)
+    #data_students = Student.objects.all()
+    context = {
+        #'data_students': data_students,
+        'data_users': data_users,
+    }
+    return render(request, 'laporan.html', context)
+
+@login_required
+def print_laporan(request):
+    user = request.user
+    mail = user.email
+    data_users = User.objects.all().filter(user_type=1)
+    #data_students = Student.objects.all()
+    context = {
+        #'data_students': data_students,
+        'data_users': data_users,
+    }
+    return render(request, 'print_laporan.html', context)

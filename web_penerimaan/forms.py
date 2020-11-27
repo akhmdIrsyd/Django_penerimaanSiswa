@@ -39,14 +39,21 @@ class StudentForm(forms.ModelForm):
 
     class Meta:
         model = Student
-        fields = ['nisn', 'nama', 'alamat', 'sekolah','alamat', 'sekolah']
+        fields = ['nisn', 'nama', 'alamat', 'sekolah','alamat', 'sekolah','nilai_skhu']
+        labels = {
+            "sekolah": "sekolah asal",
+            "nilai_skhu": "nilai SKHU",
+        }
 
 class StudentAForm(forms.ModelForm):
     class Meta:
         model = Student
         fields = ['nisn', 'nama', 'alamat', 'sekolah', 'alamat', 'sekolah', 'nama_ayah',
-                  'nama_ibu', 'alamat_orang_tua', 'Penghasilan_ayah', 'Penghasilan_ibu', 'foto', 'ijazah', 'SKHUN', 'status_pendaftaran', 'status_verifikasi', 'status_seleksi']
-
+                  'nama_ibu', 'alamat_orang_tua', 'Penghasilan_ayah', 'Penghasilan_ibu', 'foto', 'ijazah', 'SKHUN','nilai_skhu', 'status_pendaftaran', 'status_verifikasi', 'status_seleksi','nilai_skhu']
+        labels = {
+            "sekolah": "sekolah asal",
+            "nilai_skhu": "nilai SKHU",
+        }
 class ParentForm(forms.ModelForm):
     class Meta:
         model = Student
@@ -56,6 +63,11 @@ class FileForm(forms.ModelForm):
     class Meta:
         model = Student
         fields = ['foto', 'ijazah', 'SKHUN']
+        labels = {
+            "foto": "Foto (max 2MB, file tipe .jpg)",
+            "ijazah": "Ijazah (max 2MB,file tipe .pdf)",
+            "SKHUN": "SKHUN (max 2MB,file tipe .pdf)",
+        }
 
 
 class AkunForm(forms.ModelForm):

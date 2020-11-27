@@ -1,0 +1,93 @@
+
+{% load static %}
+<html>
+<head>
+<title>Laporan Penerimaan Siswa</title>
+<meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css'%}">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="{% static 'css/fontastic.css' %}">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/style.default.css'%}" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="{% static 'css/custom.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/summernote/summernote-bs4.css'%}">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+
+    <link rel="stylesheet" href="{% static 'vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css' %}">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<body>
+<!-- Item --><div class="container-fluid">
+<h1><center>LAPORAN</center></h1>
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>no</th>
+                                            <th>email</th>
+                                            <th>nama</th>
+                                            <th>Asal Sekolah</th>
+                                            <th>Nilai SKHU</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for row in data_users %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ row.email }}</td>
+                                                <td>{{ row.student.nama }}</td>
+                                                <td>{{ row.student.sekolah }}</td>
+                                                <td>{{ row.student.nilai_skhu }}</td>
+                                                <td>{{ row.student.get_status_seleksi_display }}</td>
+                                                
+                                                
+                                                
+                                                
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+        </div>
+
+ 
+    <script src="{% static 'vendor/datatables.net/js/jquery.dataTables.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/dataTables.buttons.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.html5.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.print.min.js'%}"></script>
+    <script src="{% static 'vendor/datatables.net-buttons/js/buttons.colVis.min.js'%}"></script>
+    <script src="{% static 'js/data-table/datatables-init.js'%}"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'vendor/popper.js/umd/popper.min.js'%}"> </script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'vendor/jquery.cookie/jquery.cookie.js'%}"> </script>
+    <script src="{% static 'vendor/chart.js/Chart.min.js'%}"></script>
+    <script src="{% static 'vendor/jquery-validation/jquery.validate.min.js'%}"></script>
+    <script src="{% static 'js/charts-home.js'%}"></script>
+    <!-- Main File-->
+    <script src="{% static 'js/front.js'%}"></script>
+    
+    <script>
+    function printkartu_admin(){
+
+    var URL = "print_laporan/";
+    var W = window.open(URL);
+
+    W.window.print(); // Is this the right syntax ? This prints a blank page and not the above URL
+    }
+    </script>
+</body>
+</html>

@@ -20,7 +20,7 @@
                   {% endif %}
 
                   <a  href="{% url 'Index' %}" class="menu-btn active">Home</a>
-                  <a  href="{% url 'pengumuman' %}" class="menu-btn active">Pengumuman</a>
+                  <a  href="{% url 'pengumuman' %}" class="menu-btn active">Announcement</a>
                    
               </div>
               <!-- Navbar Menu -->
@@ -64,13 +64,14 @@
             {% elif request.user.user_type == 3 %}
               <li ><a href="{% url 'DashBoard' %}"> <i class="icon-home"></i>Home </a></li>
               <li><a href="{% url 'akun' %}"> <i class="icon-grid"></i>Daftar Akun </a></li>
-              <li><a href="{% url 'pengumuman_admin' %}"> <i class="icon-grid"></i>Pengumuman </a></li>
+              <li><a href="{% url 'pengumuman_admin' %}"> <i class="icon-grid"></i>Announcement </a></li>
+              <li><a href="{% url 'laporan' %}"> <i class="icon-grid"></i>Laporan </a></li>
               <li><a href="{% url 'setting' %}"> <i class="icon-user"></i>Ganti Password </a></li>
             {% elif request.user.user_type == 1 %}
               <li ><a href="{% url 'DashBoard' %}"> <i class="icon-home"></i>Home </a></li>
               <li><a href="{% url 'biodata' %}"> <i class="icon-grid"></i>Biodata</a></li>
               <li><a href="{% url 'kartu' %}"> <i class="icon-grid"></i>Print Kartu Peserta</a></li>
-              <li><a href="{% url 'hasil_seleksi' %}"> <i class="icon-grid"></i>Hasil Seleksi</a></li>
+              <li><a href="{% url 'hasil_seleksi' %}"> <i class="icon-grid"></i>Pengumuman</a></li>
               <li><a href="{% url 'password' %}"> <i class="icon-user"></i>Ganti Password </a></li>
               
             {% endif %}

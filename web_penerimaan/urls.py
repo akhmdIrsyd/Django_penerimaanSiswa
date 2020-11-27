@@ -32,6 +32,8 @@ urlpatterns = [
     path('print_kartu/', views.kartu, name='print_kartu'),
     path('pendaftar/print_kartuAdmin/<int:pk>/', views.admin_kartu, name='print_kartuAdmin'),
     path('hasil_seleksi/', views.Hasil_seleksi, name='hasil_seleksi'),
+    path('laporan/', views.laporan, name='laporan'),
+    path('laporan/print_laporan/', views.print_laporan, name='printlaporan'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
