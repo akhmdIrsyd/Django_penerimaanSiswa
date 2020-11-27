@@ -9,15 +9,12 @@
 {% endblock %}
 {% block body %}
 <!-- Item --><div class="container-fluid">
-<a href="" ><button class="btn bg-blue"  onClick="printkartu_admin()" type="button" name="button">
-                                                 <i class="fa fa-print border-bottom"></i></button></a>
+
  {% if data_tombol.is_tombol == False %}
-<a href="{% url 'tombol' %}" ><button class="btn bg-blue"  type="button11" name="button11">
-                                                 Aktifkan Pengumuman</i></button></a>
+Pengumuman Belum Ada
 {% elif data_tombol.is_tombol == True %}
-<a href="{% url 'tombol' %}" ><button class="btn bg-blue"  type="button11" name="button11">
-                                              Nonaktifkan Pengumuman</i></button></a>
-{% endif %}
+
+
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
@@ -39,13 +36,11 @@
                                                 <td>{{ row.student.nilai_skhu }}</td>
                                                 <td>{{ row.student.get_status_seleksi_display }}</td>
                                                 
-                                                
-                                                
-                                                
                                             </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
+    {% endif %}
         </div>
  {% endblock %}
 

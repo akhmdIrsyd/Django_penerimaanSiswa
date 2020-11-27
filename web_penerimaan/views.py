@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect, HttpResponse
 from .forms import SignUpForm, StudentForm, UserForm, SignUp_panitiaForm, AkunForm, StudentAForm, ParentForm, FileForm, AkunSiswaForm, PengumumanForm
 from django.contrib.auth.decorators import login_required
-from .models import User,Student,Pengumuman
+from .models import User,Student,Pengumuman,tombol
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 
@@ -411,12 +411,26 @@ def laporan(request):
     user = request.user
     mail = user.email
     data_users = User.objects.all().filter(user_type=1)
+    data_tombol = tombol.objects.get(id=1)
     #data_students = Student.objects.all()
     context = {
         #'data_students': data_students,
         'data_users': data_users,
+        'data_tombol': data_tombol,
     }
     return render(request, 'laporan.html', context)
+
+
+def laporan_front(request):
+    data_users = User.objects.all().filter(user_type=1)
+    data_tombol = tombol.objects.get(id=1)
+    #data_students = Student.objects.all()
+    context = {
+        #'data_students': data_students,
+        'data_users': data_users,
+        'data_tombol': data_tombol,
+    }
+    return render(request, 'laporan_front.html', context)
 
 @login_required
 def print_laporan(request):
@@ -429,3 +443,20 @@ def print_laporan(request):
         'data_users': data_users,
     }
     return render(request, 'print_laporan.html', context)
+
+#update data akun
+@login_required
+def tombol_switch(request):
+    user = request.user
+    mail = user.email
+    data_tombol = tombol.objects.get(id=1)
+    if data_tombol.is_tombol == False:
+        data_tombol.is_tombol=True
+        data_tombol.save()
+    elif data_tombol.is_tombol == True:
+        data_tombol.is_tombol=False
+        data_tombol.save()
+    context = {
+        
+    }
+    return redirect('laporan')

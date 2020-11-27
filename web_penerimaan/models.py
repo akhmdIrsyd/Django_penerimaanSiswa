@@ -136,3 +136,11 @@ class Pengumuman(models.Model):
     def __str__(self):
         return str(self.id)
 
+class tombol(models.Model):
+    is_tombol = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.id)
+
+        
+

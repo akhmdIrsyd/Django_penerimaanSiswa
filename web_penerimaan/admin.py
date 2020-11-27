@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import User,Student, Pengumuman
+from .models import User,Student, Pengumuman,tombol
 from django.contrib.auth.admin import UserAdmin
 
 
@@ -9,7 +9,7 @@ from django.contrib.auth.admin import UserAdmin
 admin.site.register(User)
 admin.site.register(Student)
 admin.site.register(Pengumuman)
-
+admin.site.register(tombol)
 class CustomUserAdmin(UserAdmin):
     model = User
     list_display = ('email', 'is_staff', 'is_active',)

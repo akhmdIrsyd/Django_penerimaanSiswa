@@ -20,8 +20,8 @@
                   {% endif %}
 
                   <a  href="{% url 'Index' %}" class="menu-btn active">Home</a>
-                  <a  href="{% url 'pengumuman' %}" class="menu-btn active">Announcement</a>
-                   
+                  <!-- <a  href="{% url 'pengumuman' %}" class="menu-btn active">Announcement</a> -->
+                  <a  href="{% url 'announcement' %}" class="menu-btn active">Pengumuman</a>
               </div>
               <!-- Navbar Menu -->
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
@@ -64,7 +64,7 @@
             {% elif request.user.user_type == 3 %}
               <li ><a href="{% url 'DashBoard' %}"> <i class="icon-home"></i>Home </a></li>
               <li><a href="{% url 'akun' %}"> <i class="icon-grid"></i>Daftar Akun </a></li>
-              <li><a href="{% url 'pengumuman_admin' %}"> <i class="icon-grid"></i>Announcement </a></li>
+              <!--<li><a href="{% url 'pengumuman_admin' %}"> <i class="icon-grid"></i>Announcement </a></li>-->
               <li><a href="{% url 'laporan' %}"> <i class="icon-grid"></i>Laporan </a></li>
               <li><a href="{% url 'setting' %}"> <i class="icon-user"></i>Ganti Password </a></li>
             {% elif request.user.user_type == 1 %}
