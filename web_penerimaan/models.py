@@ -50,13 +50,13 @@ class CustomUserManager(BaseUserManager):
 
 class User(AbstractUser):
     USER_TYPE_CHOICES = (
-        (1, 'student'),
-        (2, 'comitte'),
+        (1, 'Siswa'),
+        (2, 'Panitia'),
         (3, 'admin'),
     )
     user_type=models.PositiveIntegerField(choices=USER_TYPE_CHOICES, default=1)
     username = None
-    email = models.EmailField(_('email address'), unique=True)
+    email = models.EmailField(_('email'), unique=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -141,6 +141,24 @@ class tombol(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+class visimisi(models.Model):
+    judul = models.CharField(max_length=50, blank=True, null=True)
+    visimisi = models.TextField(blank=True, null=True)
+
+class gambar(models.Model):
+    gambar = models.FileField(upload_to=_upload_path, null=True,validators=[FileExtensionValidator(['jpg']), file_size])
+    #Foto=models.ImageField(_(""), upload_to=None, height_field=None, width_field=None, max_length=None)
+
+    def get_upload_path(self, filename):
+        return "static/gambar/"+filename
+
+class alur(models.Model):
+    alur = models.FileField(upload_to=_upload_path, null=True,validators=[FileExtensionValidator(['jpg']), file_size])
+    #Foto=models.ImageField(_(""), upload_to=None, height_field=None, width_field=None, max_length=None)
+
+    def get_upload_path(self, filename):
+        return "static/alur/"+filename
 
         
 

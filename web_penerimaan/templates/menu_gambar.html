@@ -5,42 +5,33 @@
     <title>Bootstrap Material Admin by Bootstrapious.com</title>
 {% endblock %}
 {% block judul %}
-<h2 class="no-margin-bottom">Pendaftar</h2>
+<h2 class="no-margin-bottom">Gambar</h2>
 {% endblock %}
 {% block body %}
 <div class="row bg-white has-shadow">
 <!-- Item --><div class="container-fluid">
-<a href="" ><button class="btn bg-blue"  onClick="printkartu_admin()" type="button" name="button">
-                                                 <i class="fa fa-print border-bottom"></i></button></a>
- {% if data_tombol.is_tombol == False %}
-<a href="{% url 'tombol' %}" ><button class="btn bg-blue"  type="button11" name="button11">
-                                                 Aktifkan Pengumuman</i></button></a>
-{% elif data_tombol.is_tombol == True %}
-<a href="{% url 'tombol' %}" ><button class="btn bg-blue"  type="button11" name="button11">
-                                              Nonaktifkan Pengumuman</i></button></a>
-{% endif %}
+
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>no</th>
-                                            <th>email</th>
-                                            <th>nama</th>
-                                            <th>Asal Sekolah</th>
-                                            <th>Nilai SKHU</th>
-                                            <th>Keterangan</th>
+                                            <th>No</th>
+                                            <th>Gambar</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for row in data_users %}
+                                        {% for row in rows %}
                                             <tr>
                                                 <td>{{ forloop.counter }}</td>
-                                                <td>{{ row.email }}</td>
-                                                <td>{{ row.student.nama }}</td>
-                                                <td>{{ row.student.sekolah }}</td>
-                                                <td>{{ row.student.nilai_skhu }}</td>
-                                                <td>{{ row.student.get_status_seleksi_display }}</td>
+                                                <td>{{ row.gambar }}</td>
+                                                <td>
                                                 
                                                 
+                                                <button class="btn bg-orange" type="button" name="button">
+                                                <a href="{% url 'gambar_update' pk=row.pk %}" id = '{{row.pk}}'> <i class="fa fa-pencil border-bottom"></i></a></button>
+                                                
+                                               
+                                                </td>
                                                 
                                                 
                                             </tr>
@@ -48,7 +39,7 @@
                                     </tbody>
                                 </table>
         </div>
-    </div>
+        </div>
  {% endblock %}
 
  {% block js %}
@@ -61,13 +52,4 @@
     <script src="{% static 'vendor/datatables.net-buttons/js/buttons.colVis.min.js'%}"></script>
     <script src="{% static 'js/data-table/datatables-init.js'%}"></script>
     
-    <script>
-    function printkartu_admin(){
-
-    var URL = "print_laporan/";
-    var W = window.open(URL);
-
-    W.window.print(); // Is this the right syntax ? This prints a blank page and not the above URL
-    }
-    </script>
  {% endblock  %}

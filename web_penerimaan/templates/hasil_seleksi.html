@@ -8,6 +8,7 @@
 <h2 class="no-margin-bottom">Announcement</h2>
 {% endblock %}
 {% block body %}
+<div class="row bg-white has-shadow">
 <!-- Item --><div class="container-fluid">
 
  {% if data_students.status_seleksi == 3 %}
@@ -28,6 +29,7 @@ maaf, anda dinyatakan tidak lulus
 hasil seleksi belum keluar
 {% endif %}
         </div>
+</div>
  {% endblock %}
 
  {% block js %}

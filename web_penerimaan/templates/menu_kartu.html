@@ -5,9 +5,10 @@
     <title>Bootstrap Material Admin by Bootstrapious.com</title>
 {% endblock %}
 {% block judul %}
-<h2 class="no-margin-bottom">Announcement</h2>
+<h2 class="no-margin-bottom">Hasil</h2>
 {% endblock %}
 {% block body %}
+<div class="row bg-white has-shadow">
 <!-- Item --><div class="container-fluid">
  {% if data_students.status_pendaftaran == 2 %}
 <input type="button" onClick="printChart()"   value="Cetak Kartu">
@@ -16,6 +17,7 @@
 Selesaikan Pendaftaran Anda
 {% endif %}
         </div>
+</div>
  {% endblock %}
 
  {% block js %}

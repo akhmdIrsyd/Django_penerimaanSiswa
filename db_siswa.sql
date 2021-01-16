@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2020 at 06:47 PM
+-- Generation Time: Jan 16, 2021 at 03:18 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -98,7 +98,19 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (33, 'Can add tombol', 9, 'add_tombol'),
 (34, 'Can change tombol', 9, 'change_tombol'),
 (35, 'Can delete tombol', 9, 'delete_tombol'),
-(36, 'Can view tombol', 9, 'view_tombol');
+(36, 'Can view tombol', 9, 'view_tombol'),
+(37, 'Can add alur', 10, 'add_alur'),
+(38, 'Can change alur', 10, 'change_alur'),
+(39, 'Can delete alur', 10, 'delete_alur'),
+(40, 'Can view alur', 10, 'view_alur'),
+(41, 'Can add gambar', 11, 'add_gambar'),
+(42, 'Can change gambar', 11, 'change_gambar'),
+(43, 'Can delete gambar', 11, 'delete_gambar'),
+(44, 'Can view gambar', 11, 'view_gambar'),
+(45, 'Can add visimisi', 12, 'add_visimisi'),
+(46, 'Can change visimisi', 12, 'change_visimisi'),
+(47, 'Can delete visimisi', 12, 'delete_visimisi'),
+(48, 'Can view visimisi', 12, 'view_visimisi');
 
 -- --------------------------------------------------------
 
@@ -126,7 +138,15 @@ INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`,
 (2, '2020-11-27 13:59:26.638733', '1', 'admin@mail.com', 2, '[{\"changed\": {\"fields\": [\"User type\"]}}]', 6, 1),
 (3, '2020-11-27 14:04:35.543760', '2', 'Student object (2)', 2, '[{\"changed\": {\"fields\": [\"Nama\", \"Alamat\", \"Sekolah\", \"Foto\", \"Ijazah\", \"SKHUN\", \"Status pendaftaran\", \"Status verifikasi\", \"Status seleksi\"]}}]', 7, 1),
 (4, '2020-11-27 15:58:57.490316', '1', '1', 1, '[{\"added\": {}}]', 9, 1),
-(5, '2020-11-27 15:59:04.794056', '1', '1', 2, '[{\"changed\": {\"fields\": [\"Is tombol\"]}}]', 9, 1);
+(5, '2020-11-27 15:59:04.794056', '1', '1', 2, '[{\"changed\": {\"fields\": [\"Is tombol\"]}}]', 9, 1),
+(6, '2021-01-16 00:37:43.619054', '1', 'gambar object (1)', 1, '[{\"added\": {}}]', 11, 1),
+(7, '2021-01-16 00:50:42.166627', '1', 'alur object (1)', 1, '[{\"added\": {}}]', 10, 1),
+(8, '2021-01-16 01:14:00.454630', '1', 'visimisi object (1)', 1, '[{\"added\": {}}]', 12, 1),
+(9, '2021-01-16 01:14:09.311064', '2', 'visimisi object (2)', 1, '[{\"added\": {}}]', 12, 1),
+(10, '2021-01-16 01:49:29.809016', '2', 'gambar object (2)', 1, '[{\"added\": {}}]', 11, 1),
+(11, '2021-01-16 01:49:54.408612', '3', 'gambar object (3)', 1, '[{\"added\": {}}]', 11, 1),
+(12, '2021-01-16 02:07:15.024176', '1', 'alur object (1)', 2, '[{\"changed\": {\"fields\": [\"Alur\"]}}]', 10, 1),
+(13, '2021-01-16 02:17:16.604190', '3', 'gambar object (3)', 2, '[{\"changed\": {\"fields\": [\"Gambar\"]}}]', 11, 1);
 
 -- --------------------------------------------------------
 
@@ -150,10 +170,13 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (2, 'auth', 'permission'),
 (4, 'contenttypes', 'contenttype'),
 (5, 'sessions', 'session'),
+(10, 'web_penerimaan', 'alur'),
+(11, 'web_penerimaan', 'gambar'),
 (8, 'web_penerimaan', 'pengumuman'),
 (7, 'web_penerimaan', 'student'),
 (9, 'web_penerimaan', 'tombol'),
-(6, 'web_penerimaan', 'user');
+(6, 'web_penerimaan', 'user'),
+(12, 'web_penerimaan', 'visimisi');
 
 -- --------------------------------------------------------
 
@@ -197,7 +220,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (22, 'web_penerimaan', '0004_auto_20200924_0926', '2020-11-27 13:57:09.547521'),
 (23, 'web_penerimaan', '0005_auto_20201125_1359', '2020-11-27 13:57:09.582389'),
 (24, 'web_penerimaan', '0006_student_nilai_skhu', '2020-11-27 14:34:26.084698'),
-(25, 'web_penerimaan', '0007_tombol', '2020-11-27 15:57:44.416457');
+(25, 'web_penerimaan', '0007_tombol', '2020-11-27 15:57:44.416457'),
+(26, 'web_penerimaan', '0008_auto_20210116_0718', '2021-01-16 00:19:28.678111');
 
 -- --------------------------------------------------------
 
@@ -210,6 +234,54 @@ CREATE TABLE `django_session` (
   `session_data` longtext NOT NULL,
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `django_session`
+--
+
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('natzypecqz61t78ssnd4s8014kx2pixw', '.eJxVjEEOwiAQRe_C2hAHKAWX7nsGwsyAVA1NSrsy3l1JutDte-__lwhx30rYW1rDzOIiQJx-GUZ6pNoF32O9LZKWuq0zyp7IwzY5LZye16P9Oyixlb7OCM5p7UgNFlPUkC2erUqKkzbGESnnIZLlDJ6VtoPxo8MR0Fj4QvH-AOSBN6w:1l0b5R:NbDZkQZQvzTKpPfnNe6QK9cXKGNQca_QSgzvl6HMQDM', '2021-01-30 02:13:09.192961'),
+('o8lirmepckjexp3e1i3edkidki7rngf3', '.eJxVjMsOwiAQRf-FtSGAvOrSvd_QDMOMVA0kpV0Z_92QdKHbe865bzHDvpV577TOSxYXcRan3y0BPqkOkB9Q701iq9u6JDkUedAuby3T63q4fwcFehm15UQM1oO2iI4hsCJvlCUbGTVrp_wUgJX2jg0BJkzRxmAmYEKdxOcLE4Y5Gw:1kt2Z7:AaRxVoOtv8u_yauN1YTfM8aAZR25ESwn7S1Msmq-nUo', '2021-01-09 05:56:33.142217'),
+('wsk1qrr7bllogymb0b6s9yttlyavf3zl', '.eJxVjEEOwiAQRe_C2hAHKAWX7nsGwsyAVA1NSrsy3l1JutDte-__lwhx30rYW1rDzOIiQJx-GUZ6pNoF32O9LZKWuq0zyp7IwzY5LZye16P9Oyixlb7OCM5p7UgNFlPUkC2erUqKkzbGESnnIZLlDJ6VtoPxo8MR0Fj4QvH-AOSBN6w:1l0aVu:M6j_mpDM7YKO7-t94A_9kD8u09sNxGl5yxsHvgX6px8', '2021-01-30 01:36:26.268345'),
+('za0lx1db7mt17f67cxvh46nh4okc9tyj', '.eJxVjDsOwjAQBe_iGln-fyjpc4Zos7smARRLcVIh7o4spYD2zcx7ixGOfR6Pxtu4kLgKIy6_2wT45LUDesB6rxLrum_LJLsiT9rkUIlft9P9O5ihzb2OlrTJphRKmL0DNEU5zlo7xzTZpHzIASEa5lS8TmRVoKhCKug5gPh8AeS5N-Y:1l0Ur4:17UO4-tPMWkWouBqB44o5gcFKx4wtx62jxxEAxd01jk', '2021-01-29 19:33:54.441858');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_penerimaan_alur`
+--
+
+CREATE TABLE `web_penerimaan_alur` (
+  `id` int(11) NOT NULL,
+  `alur` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `web_penerimaan_alur`
+--
+
+INSERT INTO `web_penerimaan_alur` (`id`, `alur`) VALUES
+(1, 'static/alur/cover.JPG');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_penerimaan_gambar`
+--
+
+CREATE TABLE `web_penerimaan_gambar` (
+  `id` int(11) NOT NULL,
+  `gambar` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `web_penerimaan_gambar`
+--
+
+INSERT INTO `web_penerimaan_gambar` (`id`, `gambar`) VALUES
+(1, 'static/gambar/x.jpg'),
+(2, 'static/gambar/cover.JPG'),
+(3, 'static/gambar/dash-min.jpg');
 
 -- --------------------------------------------------------
 
@@ -262,7 +334,8 @@ CREATE TABLE `web_penerimaan_student` (
 --
 
 INSERT INTO `web_penerimaan_student` (`nisn`, `user_id`, `nama`, `alamat`, `sekolah`, `nama_ayah`, `nama_ibu`, `alamat_orang_tua`, `Penghasilan_ayah`, `Penghasilan_ibu`, `foto`, `ijazah`, `SKHUN`, `status_pendaftaran`, `status_verifikasi`, `status_seleksi`, `nilai_skhu`) VALUES
-('12345', 2, 'siswa 1', 'alamat 1', 'sekolah 1', NULL, NULL, '', 1, 1, 'static/uploads/2/CFCFAC_Full_time_Insta_1080x1920_with_pic.jpg', 'static/uploads/2/778-2098-1-PB.pdf', 'static/uploads/2/Apostolopoulos-Mpesiana2020_Article_Covid-19AutomaticDetectionFrom.pdf', 2, 2, 3, 0);
+('12345', 2, 'siswa 1', 'alamat 1', 'sekolah 1', NULL, NULL, '', 1, 1, 'static/uploads/2/CFCFAC_Full_time_Insta_1080x1920_with_pic.jpg', 'static/uploads/2/778-2098-1-PB.pdf', 'static/uploads/2/Apostolopoulos-Mpesiana2020_Article_Covid-19AutomaticDetectionFrom.pdf', 2, 2, 3, 0),
+('1234567999', 3, '', '', '', NULL, NULL, NULL, 1, 1, '', '', '', 1, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -309,8 +382,10 @@ CREATE TABLE `web_penerimaan_user` (
 --
 
 INSERT INTO `web_penerimaan_user` (`id`, `password`, `last_login`, `is_superuser`, `first_name`, `last_name`, `is_staff`, `is_active`, `date_joined`, `user_type`, `email`, `is_student`, `is_teacher`) VALUES
-(1, 'pbkdf2_sha256$216000$ghlrTdMUBtdj$15qT8PVvavi7XZgVlb0/S23phz2aF9a7kXRkPh21zI8=', '2020-11-27 15:58:13.842163', 1, '', '', 1, 1, '2020-11-27 13:57:53.000000', 3, 'admin@mail.com', 0, 0),
-(2, 'pbkdf2_sha256$216000$FHIxK1dxDqQQ$Mh/VoY74PRXFLsM8Rs36+jECNQqLTCLwDbrm0O6lYLA=', '2020-11-27 15:26:35.895994', 0, '', '', 0, 1, '2020-11-27 14:00:52.796354', 1, 'siswa1@mail.com', 0, 0);
+(1, 'pbkdf2_sha256$216000$ghlrTdMUBtdj$15qT8PVvavi7XZgVlb0/S23phz2aF9a7kXRkPh21zI8=', '2021-01-16 02:13:09.188932', 1, '', '', 1, 1, '2020-11-27 13:57:53.000000', 3, 'admin@mail.com', 0, 0),
+(2, 'pbkdf2_sha256$216000$FHIxK1dxDqQQ$Mh/VoY74PRXFLsM8Rs36+jECNQqLTCLwDbrm0O6lYLA=', '2021-01-15 19:47:48.097341', 0, '', '', 0, 1, '2020-11-27 14:00:52.796354', 1, 'siswa1@mail.com', 0, 0),
+(3, 'pbkdf2_sha256$216000$ZUtQViEgRs6Y$LLIHMWiZ47vEq0NRa1REacq90hQ4DP7CbX0v09J1qyM=', '2020-12-26 05:56:33.136233', 0, '', '', 0, 1, '2020-12-26 05:56:32.870943', 1, 'siswa10@gmail.com', 0, 0),
+(4, 'pbkdf2_sha256$216000$6PxQpyP4oGou$bROq0z+FeFN2obUAtLB6efR8+cqoaOU0iKdgjD+7/ng=', '2021-01-15 19:39:50.325735', 0, '', '', 0, 1, '2021-01-15 19:22:54.859759', 2, 'panitia@mail.com', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -335,6 +410,26 @@ CREATE TABLE `web_penerimaan_user_user_permissions` (
   `user_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `web_penerimaan_visimisi`
+--
+
+CREATE TABLE `web_penerimaan_visimisi` (
+  `id` int(11) NOT NULL,
+  `judul` varchar(50) DEFAULT NULL,
+  `visimisi` longtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `web_penerimaan_visimisi`
+--
+
+INSERT INTO `web_penerimaan_visimisi` (`id`, `judul`, `visimisi`) VALUES
+(1, 'Visi', 'aaaa'),
+(2, 'Misi', '<ul><li>aaaaa</li><li>sfsf</li></ul>');
 
 --
 -- Indexes for dumped tables
@@ -391,6 +486,18 @@ ALTER TABLE `django_session`
   ADD KEY `django_session_expire_date_a5c62663` (`expire_date`);
 
 --
+-- Indexes for table `web_penerimaan_alur`
+--
+ALTER TABLE `web_penerimaan_alur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `web_penerimaan_gambar`
+--
+ALTER TABLE `web_penerimaan_gambar`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `web_penerimaan_pengumuman`
 --
 ALTER TABLE `web_penerimaan_pengumuman`
@@ -433,6 +540,12 @@ ALTER TABLE `web_penerimaan_user_user_permissions`
   ADD KEY `web_penerimaan_user__permission_id_b9b920ad_fk_auth_perm` (`permission_id`);
 
 --
+-- Indexes for table `web_penerimaan_visimisi`
+--
+ALTER TABLE `web_penerimaan_visimisi`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -452,25 +565,37 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT for table `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `web_penerimaan_alur`
+--
+ALTER TABLE `web_penerimaan_alur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `web_penerimaan_gambar`
+--
+ALTER TABLE `web_penerimaan_gambar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `web_penerimaan_pengumuman`
@@ -488,7 +613,7 @@ ALTER TABLE `web_penerimaan_tombol`
 -- AUTO_INCREMENT for table `web_penerimaan_user`
 --
 ALTER TABLE `web_penerimaan_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `web_penerimaan_user_groups`
@@ -501,6 +626,12 @@ ALTER TABLE `web_penerimaan_user_groups`
 --
 ALTER TABLE `web_penerimaan_user_user_permissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `web_penerimaan_visimisi`
+--
+ALTER TABLE `web_penerimaan_visimisi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

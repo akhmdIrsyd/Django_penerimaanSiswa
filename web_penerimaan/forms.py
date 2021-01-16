@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User, Student, Pengumuman
+from .models import User, Student, Pengumuman, alur, gambar, visimisi
 
 
 class SignUpForm(UserCreationForm):
@@ -17,9 +17,20 @@ class SignUpForm(UserCreationForm):
 #)
 class SignUp_panitiaForm(UserCreationForm):
     #User_type = forms.ChoiceField(choices=USER_CHOICES)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password1'].label = 'password'
+        self.fields['password2'].label = 'Konfirmasi password'
+        
     class Meta:
         model = User
         fields = ('email', 'user_type', 'password1', 'password2')
+        labels = {
+            "email": "Email",
+            "user_type": "Tipe Akun",
+            "password1": "Password",
+            "password2": "Konfirmasi Password"
+        }
 
 
 class LoginForm(UserCreationForm):
@@ -71,17 +82,26 @@ class FileForm(forms.ModelForm):
 
 
 class AkunForm(forms.ModelForm):
-    new_password = forms.CharField(max_length=500, required=False)
+    new_password = forms.CharField(max_length=500, required=False, label="Password Baru")
     class Meta:
         model = User
         fields = ['first_name', 'last_name','email','new_password']
+        labels = {
+            "first_name": "Nama Awal",
+            "last_name": "Nama Akhir",
+            "email": "Email",
+            "new_password": "Password Baru",
+        }
 
 
 class AkunSiswaForm(forms.ModelForm):
-    new_password = forms.CharField(max_length=500, required=False)
+    new_password = forms.CharField(max_length=500, required=False, label="Password Baru")
     class Meta:
         model = User
         fields = ['new_password']
+        labels = {
+            "new_password": "Password Baru",
+        }
 
 
 class PengumumanForm(forms.ModelForm):
@@ -89,3 +109,22 @@ class PengumumanForm(forms.ModelForm):
     class Meta:
         model = Pengumuman
         fields = ['judul','isi']
+
+class AlurForm(forms.ModelForm):
+    class Meta:
+        model = alur
+        fields = ['alur']
+
+
+class GambarForm(forms.ModelForm):
+
+    class Meta:
+        model = gambar
+        fields = ['gambar']
+
+
+class VisimisiForm(forms.ModelForm):
+
+    class Meta:
+        model = visimisi
+        fields = ['judul', 'visimisi']

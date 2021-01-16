@@ -2,9 +2,9 @@
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect, HttpResponse
-from .forms import SignUpForm, StudentForm, UserForm, SignUp_panitiaForm, AkunForm, StudentAForm, ParentForm, FileForm, AkunSiswaForm, PengumumanForm
+from .forms import SignUpForm, StudentForm, UserForm, SignUp_panitiaForm, AkunForm, StudentAForm, ParentForm, FileForm, AkunSiswaForm, VisimisiForm, GambarForm, AlurForm
 from django.contrib.auth.decorators import login_required
-from .models import User,Student,Pengumuman,tombol
+from .models import User,Student,Pengumuman,tombol, alur, gambar, visimisi
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 
@@ -154,7 +154,7 @@ def pendaftar(request):
     }
     return render(request, 'pendaftar.html', context)
 
-#update data akun
+#update data pendaftar
 @login_required
 def Update_Pendaftar(request, pk):
     user = request.user
@@ -247,9 +247,18 @@ def Pengumuman_list(request):
 def Depan(request):
     Data_siswa = Pengumuman.objects.order_by("-tanggal")[1:6]
     pengumuman_last = Pengumuman.objects.latest('tanggal')
+    Data_alur = alur.objects.all()
+    Data_visimisi = visimisi.objects.all()
+    #Data_gambar = gambar.objects.all()
+    Data_gambar = gambar.objects.order_by("-id")[1:3]
+    gambar_lasts = gambar.objects.latest('id')
     context = {
         'rows': Data_siswa,
         'rows1': pengumuman_last,
+        'rows2': Data_alur,
+        'rows3': Data_visimisi,
+        'rows4': Data_gambar,
+        'rows5': gambar_lasts,
     }
     return render(request, 'index.html', context)
 
@@ -444,7 +453,7 @@ def print_laporan(request):
     }
     return render(request, 'print_laporan.html', context)
 
-#update data akun
+#update tombol
 @login_required
 def tombol_switch(request):
     user = request.user
@@ -460,3 +469,94 @@ def tombol_switch(request):
         
     }
     return redirect('laporan')
+
+#list Gambar
+@login_required
+def list_alur(request):
+    Data_alur = alur.objects.all()
+    context = {
+        'rows': Data_alur,
+    }
+    return render(request, 'menu_alur.html', context)
+
+#update alur
+@login_required
+def Update_alur(request, pk):
+    user = request.user
+    mail = user.email
+    data_alurs = alur.objects.get(id=pk)
+    if request.method == 'POST':
+        form = AlurForm(
+            request.POST, instance=data_alurs)
+        if form.is_valid() :
+            form.save()
+            return redirect('alur')
+    else:
+        form = AlurForm(instance=data_alurs)
+    context = {
+        'form': form,
+        'mail': mail,
+    }
+    return render(request, 'biodata.html', context)
+
+
+#list Gambar
+@login_required
+def list_gambar(request):
+    Data_gambar = gambar.objects.all().order_by("-id")
+    context = {
+        'rows': Data_gambar,
+    }
+    return render(request, 'menu_gambar.html', context)
+
+#update gambar
+@login_required
+def Update_gambar(request, pk):
+    user = request.user
+    mail = user.email
+    data_gambars = gambar.objects.get(id=pk)
+    #data_students = Student.objects.get(user_id=pk)
+    if request.method == 'POST':
+        form = GambarForm(
+            request.POST, request.FILES, instance=data_gambars)
+        if form.is_valid() :
+            form.save()
+            return redirect('gambar')
+    else:
+        form = GambarForm(instance=data_gambars)
+    context = {
+        'form': form,
+        'mail': mail,
+    }
+    return render(request, 'biodata.html', context)
+
+#list Visimisi
+@login_required
+def list_visimisi(request):
+    Data_visimisi = visimisi.objects.all()
+    context = {
+        'rows': Data_visimisi,
+    }
+    return render(request, 'menu_visimisi.html', context)
+
+#update visimisi
+@login_required
+def Update_visimisi(request, pk):
+    user = request.user
+    mail = user.email
+    data_visimisis = visimisi.objects.get(id=pk)
+    #data_students = Student.objects.get(user_id=pk)
+    if request.method == 'POST':
+        form = VisimisiForm(
+            request.POST, instance=data_visimisis)
+        if form.is_valid():
+            form.save()
+            return redirect('visimisi')
+    else:
+        form = VisimisiForm(instance=data_visimisis)
+    context = {
+        'form': form,
+        'mail': mail,
+        'rows': data_visimisis
+    }
+    return render(request, 'visimisi_form.html', context)

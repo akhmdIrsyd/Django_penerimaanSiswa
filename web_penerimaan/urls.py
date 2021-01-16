@@ -36,6 +36,12 @@ urlpatterns = [
     path('announcement/', views.laporan_front, name='announcement'),
     path('laporan/print_laporan/', views.print_laporan, name='printlaporan'),
     path('tombol/', views.tombol_switch, name='tombol'),
+    path('gambar/', views.list_gambar, name='gambar'),
+    path('gambar_update/<int:pk>/', views.Update_gambar, name='gambar_update'),
+    path('alur/', views.list_alur, name='alur'),
+    path('alur_update/<int:pk>/', views.Update_alur, name='alur_update'),
+    path('visimisi/', views.list_visimisi, name='visimisi'),
+    path('alur_visimisi/<int:pk>/', views.Update_visimisi, name='visimisi_update'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
