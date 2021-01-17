@@ -8,6 +8,23 @@
 <h2 class="no-margin-bottom">Gambar</h2>
 {% endblock %}
 {% block body %}
+<style>
+    img{
+        width: 350px;
+        height: 350px;
+        
+    }
+    .box{
+        width: 250px;        
+        border: 5px solid black;
+    }    
+    .box.large{
+        height: 300px;
+    }
+    .box.small{
+        height: 100px;
+    }
+</style>
 <div class="row bg-white has-shadow">
 <!-- Item --><div class="container-fluid">
 
@@ -16,14 +33,14 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Gambar</th>
-                                            <th>Action</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for row in rows %}
                                             <tr>
                                                 <td>{{ forloop.counter }}</td>
-                                                <td>{{ row.gambar }}</td>
+                                                <td><img src="{{row.gambar.url}}" height="50%"></td>
                                                 <td>
                                                 
                                                 

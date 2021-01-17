@@ -11,7 +11,9 @@
 
     $('#bootstrap-data-table-export').DataTable({
         lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+		buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+		 "sScrollX": "100%",
+    "sScrollXInner": "100%",
     });
 
 	$('#row-select').DataTable( {

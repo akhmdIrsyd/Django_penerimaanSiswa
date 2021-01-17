@@ -487,7 +487,7 @@ def Update_alur(request, pk):
     data_alurs = alur.objects.get(id=pk)
     if request.method == 'POST':
         form = AlurForm(
-            request.POST, instance=data_alurs)
+            request.POST, request.FILES, instance=data_alurs)
         if form.is_valid() :
             form.save()
             return redirect('alur')

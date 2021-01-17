@@ -8,6 +8,24 @@
 <h2 class="no-margin-bottom">Alur</h2>
 {% endblock %}
 {% block body %}
+<!-- Item -->
+<style>
+    img{
+        width: 350px;
+        height: 350px;
+        
+    }
+    .box{
+        width: 250px;        
+        border: 5px solid black;
+    }    
+    .box.large{
+        height: 300px;
+    }
+    .box.small{
+        height: 100px;
+    }
+</style>
 <div class="row bg-white has-shadow">
 <!-- Item --><div class="container-fluid">
 
@@ -16,7 +34,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Alur</th>
-                                            <th>Action</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -44,6 +62,9 @@
  {% endblock %}
 
  {% block js %}
+    <script>
+    
+    </script>
     <script src="{% static 'vendor/datatables.net/js/jquery.dataTables.min.js'%}"></script>
     <script src="{% static 'vendor/datatables.net-bs4/js/dataTables.bootstrap4.min.js'%}"></script>
     <script src="{% static 'vendor/datatables.net-buttons/js/dataTables.buttons.min.js'%}"></script>
