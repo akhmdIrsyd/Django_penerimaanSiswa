@@ -1,4 +1,5 @@
-
+#Wise Art
+#code by AI
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect, HttpResponse
